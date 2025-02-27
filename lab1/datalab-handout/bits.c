@@ -195,7 +195,19 @@ int bitCount(int x) {
  *   Rating: 4 
  */
 int bang(int x) {
-  return 2;
+  int y=x>>1;
+  x=x|y;
+  y=x>>2;
+  x=x|y;
+  y=x>>4;
+  x=x|y;
+  y=x>>8;
+  x=x|y;
+  y=x>>16;
+  x=x|y;
+  x=x&1;
+  x=x^1;
+  return x;
 }
 /* 
  * tmin - return minimum two's complement integer 
