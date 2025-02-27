@@ -165,7 +165,17 @@ int getByte(int x, int n) {
  *   Rating: 3 
  */
 int logicalShift(int x, int n) {
-  return 2;
+  int y;
+  int z;
+  y=x&(1<<31);
+  x=~((~x)|(1<<31));
+  x=x>>n;
+  y=y>>n;
+  z=~y;
+  z=z+1;
+  y=y&z;
+  x=x|y;
+  return x;
 }
 /*
  * bitCount - returns count of number of 1's in word
@@ -194,8 +204,8 @@ int bang(int x) {
  *   Rating: 1
  */
 int tmin(void) {
-  int x=0;
-  x=x|0x80000000;
+  int x=1;
+  x=x<<31;
   return x;
 }
 /* 
@@ -230,10 +240,7 @@ int divpwr2(int x, int n) {
  */
 int negate(int x) {
   x=~x;
-  int y=x&0x80000000;
-  x=x&0x7fffffff;
   x=x+1;
-  x=x|y;
   return x;
 }
 /* 
@@ -246,7 +253,7 @@ int negate(int x) {
 int isPositive(int x) {
   int y=x>>31;
   int z=y&0x00000001;
-  int ans=!(!x|z);
+  int ans=!((!x)|z);
   return ans;
   return 2;
 }
