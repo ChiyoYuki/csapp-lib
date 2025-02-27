@@ -229,7 +229,12 @@ int divpwr2(int x, int n) {
  *   Rating: 2
  */
 int negate(int x) {
-  return 2;
+  x=~x;
+  int y=x&0x80000000;
+  x=x&0x7fffffff;
+  x=x+1;
+  x=x|y;
+  return x;
 }
 /* 
  * isPositive - return 1 if x > 0, return 0 otherwise 
