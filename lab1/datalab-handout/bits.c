@@ -208,6 +208,7 @@ int bang(int x) {
   x=x&1;
   x=x^1;
   return x;
+  return ((((~x+1)|x)>>31)&1)^1;
 }
 /* 
  * tmin - return minimum two's complement integer 
