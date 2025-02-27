@@ -195,19 +195,6 @@ int bitCount(int x) {
  *   Rating: 4 
  */
 int bang(int x) {
-  int y=x>>1;
-  x=x|y;
-  y=x>>2;
-  x=x|y;
-  y=x>>4;
-  x=x|y;
-  y=x>>8;
-  x=x|y;
-  y=x>>16;
-  x=x|y;
-  x=x&1;
-  x=x^1;
-  return x;
   return ((((~x+1)|x)>>31)&1)^1;
 }
 /* 
